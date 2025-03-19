@@ -40,3 +40,57 @@ export const categories = [
         title: "REALLY? MEME"
     }
 ]
+
+export const popularProducts = [
+    {
+        id: 1,
+        img: "/public/Assets/product_funny1.jpg",
+        title: "MEME product"
+
+    },
+    {
+        id: 2,
+        img: "/public/Assets/product_funny2.jpg",
+        title: "MEME product"
+
+    },
+    {
+        id: 3,
+        img: "/public/Assets/product_funny3.jpg",
+        title: "MEME product"
+    },
+    {
+        id: 4,
+        img: "/public/Assets/product_crying1.jpg",
+        title: "MEME product"
+
+    },
+    {
+        id: 5,
+        img: "/public/Assets/product_crying2.jpg",
+        title: "MEME product"
+
+    },
+    {
+        id: 6,
+        img: "/public/Assets/product_crying3.jpg",
+        title: "MEME product"
+    },
+    {
+        id: 7,
+        img: "/public/Assets/product_really1.jpg",
+        title: "MEME product"
+
+    },
+    {
+        id: 8,
+        img: "/public/Assets/product_really2.jpg",
+        title: "MEME product"
+
+    },
+    {
+        id: 9,
+        img: "/public/Assets/product_really3.jpg",
+        title: "MEME product"
+    }
+]

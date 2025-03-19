@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import Badge from '@mui/material/Badge'
 import Search from '@mui/icons-material/Search'

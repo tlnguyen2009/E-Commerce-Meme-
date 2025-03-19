@@ -11,7 +11,7 @@ const Container = styled.div`
 const Categories = () => {
   return <Container>
             {categories.map(item =>(
-                <CategoryItem itemTag = {item}/> //pass-in {item} as a parameter
+                <CategoryItem itemTag = {item} key = {item.id}/> //pass-in {item} as a parameter
             ))}
         </Container>
 }

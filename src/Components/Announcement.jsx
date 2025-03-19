@@ -16,6 +16,8 @@ const Container = styled.div `
     background-color: pink;
     color: black;
     display: flex;
+    overflow: hidden; /* Prevents horizontal overflow */
+    white-space: nowrap; /*Ensures text stays on one line, even it's longer, try to make the message longer to see */
     justify-content: center;
     align-items: center;
 `
