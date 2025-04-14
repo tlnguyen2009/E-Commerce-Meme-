@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material'
+import { mobile } from '../responsive'
 
 const Info = styled.div`
   opacity: 0;
   width: 300px;
-  height: 90%;
+  height: 90%; //shouldn't change regardless of screen size because it's percentage based on screen size
   position: absolute;
   top: 0;
   left: 0;
@@ -15,6 +16,9 @@ const Info = styled.div`
   justify-content: center;
   transition: all 0.5s ease;
   cursor: pointer;
+  ${mobile`
+    width: 150px;
+  `}
 `
 
 const Container = styled.div`
@@ -23,7 +27,7 @@ const Container = styled.div`
   max-width: 300px;
   min-width: 280px;
   margin: 10px;
-  height: 350px;;
+  height: 350px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -32,11 +36,18 @@ const Container = styled.div`
   &:hover ${Info} {
     opacity: 1;
   }
+
+  ${mobile`
+    max-width: 150px;
+    min-width: 140px;
+    margin: 5px;
+    height: 160px;
+  `}
 `
 
 const Image = styled.img `
-  height: 90%;
-  width: 300px;
+  height: 90%; //shouldn't change regardless of screen size because it's percentage based on screen size
+  width: 100%;
   position: absolute;
   top:0;
   left: 0;
@@ -57,21 +68,50 @@ const Icon = styled.div`
     background-color: white;
     transform: scale(1.1);
   }
+
+  ${mobile`
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  `}
 `
 
-const Product = ({eachProduct}) => {
+//Create a styled version of the icon with mobile behavior
+const StyledShoppingCart = styled(ShoppingCartOutlined)`
+  font-size: 24px;
+  ${mobile`
+    font-size: 12px !important;
+  `}
+`;
+
+const StyledSearch= styled(SearchOutlined)`
+  font-size: 24px;
+  ${mobile`
+    font-size: 12px !important;
+  `}
+`;
+
+const StyledFavoriteBorder = styled(FavoriteBorderOutlined)`
+  font-size: 24px;
+  ${mobile`
+    font-size: 12px !important;
+  `}
+`;
+
+
+const Product = ({eachproduct}) => {
   return (
     <Container>
-        <Image src = {eachProduct.img}/>
+        <Image src = {eachproduct.img}/>
         <Info>
           <Icon>
-              <ShoppingCartOutlined/>
+              <StyledShoppingCart/>
           </Icon>
           <Icon>
-              <SearchOutlined/>
+              <StyledSearch/>
           </Icon>
           <Icon>
-              <FavoriteBorderOutlined/>
+              <StyledFavoriteBorder/>
           </Icon>
         </Info>
     </Container>

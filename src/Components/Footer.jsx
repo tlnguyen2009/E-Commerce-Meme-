@@ -1,8 +1,12 @@
 import { Facebook, Instagram, Mail, Phone, Room, Twitter } from "@mui/icons-material"
 import styled from "styled-components"
+import { mobile } from "../responsive"
 
 const Container = styled.div`
     display: flex;
+    ${mobile`
+        flex-direction: column;
+    `}
 `
 
 const Left = styled.div`
@@ -27,7 +31,7 @@ const Iconwrapper = styled.div`
     height: 40px;
     border-radius: 50%;
     color: white; /*contents' colors*/
-    background-color: #${props=>props.colorCustom};
+    background-color: #${props=>props.color};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,6 +42,9 @@ const Iconwrapper = styled.div`
 const Center = styled.div`
     flex: 1;
     padding: 20px;
+    ${mobile`
+        display: none;
+    `}
 `
 
 const Title = styled.h3`
@@ -60,6 +67,9 @@ const ListItem = styled.li`
 const Right = styled.div`
     flex: 1;
     padding: 20px;
+    ${mobile`
+        background-color: #eee;
+    `}
 `
 
 const ContactItem = styled.div`
@@ -84,9 +94,9 @@ const Footer = () => {
                 necessitatibus quidem soluta temporibus dolore beatae? Quae.
             </Desc>
             <SocialContainer>
-                <Iconwrapper colorCustom ='3B5999'><Facebook/></Iconwrapper> 
-                <Iconwrapper colorCustom ='E4405F'><Instagram/></Iconwrapper>
-                <Iconwrapper colorCustom ='55ACEE'><Twitter/></Iconwrapper>
+                <Iconwrapper color ='3B5999'><Facebook/></Iconwrapper> 
+                <Iconwrapper color ='E4405F'><Instagram/></Iconwrapper>
+                <Iconwrapper color ='55ACEE'><Twitter/></Iconwrapper>
             </SocialContainer>
         </Left>
         <Center>

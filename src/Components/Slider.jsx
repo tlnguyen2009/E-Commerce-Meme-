@@ -1,8 +1,18 @@
+/*
+1/ 
+Sometimes we use braces {} between HTML tags or plaintext to tell React that "hey this is Javascript, calculate it!"
+
+2/ why we use "onClick={() => handleClick("left")}" but not "onClick={handleClick("left")}"
+because onClick={handleClick("left")} -> React will call the handleClick() immediately after it renders. () => handleClick("left"), in the other hand, creating an anonymous function when users click and then call handleClick().
+
+*/
+
 import styled from "styled-components"
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { sliderItems } from "../data";
 import { useState } from "react";
+import { mobile } from "../responsive";
 
 const Container = styled.div `
     width: 100%;
@@ -11,6 +21,9 @@ const Container = styled.div `
     /* background-color: coral; */
     position: relative;
     overflow: hidden;
+    ${mobile`
+      display: none;
+    `}
 `
 const Arrow = styled.div`
     width: 50px;
@@ -34,15 +47,15 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   transition: all 1.5s ease;
-  transform: translateX(${props => props.slideIndex * -100}vw);
-`
+  transform: ${({ slideindex }) => `translateX(${slideindex * -100}vw)`};
+`;
 
 const Slide = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #${props => props.bg};
+  background-color: #${props => props.$bg};
 `
 
 const ImgContainer = styled.div`
@@ -85,20 +98,21 @@ const Button = styled.button`
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0); //keep state updated for slider
 
-  const handleClick = (direction) => {
-    if(direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex-1 : 2)
+  const handleClick = (current_direction) => {
+    if(current_direction === "left") {
+      setSlideIndex(slideIndex > 0 ? (slideIndex-1) : 2)
     } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex+1 : 0)
+      setSlideIndex(slideIndex < 2 ? (slideIndex+1) : 0)
     }
   };
 
+  // we can fix the warning with this <Wrapper style={{ transform: `translateX(${slideIndex * -100}vw)` }}> OR change the first slideIndex to slideindex
   return (
     <Container>
         <Arrow direction = 'left' onClick={() => handleClick("left")}> <ArrowBackIosOutlinedIcon/> </Arrow>
-        <Wrapper slideIndex = {slideIndex}>
-          {sliderItems.map(item=>(
-            <Slide bg = {item.bg} key = {item.id}>
+        <Wrapper $slideindex={slideIndex}>
+          {sliderItems.map( item=>(
+            <Slide $bg = {item.bg} key = {item.id}>
               <ImgContainer>
                 <Image src = {item.img}/>
               </ImgContainer>

@@ -1,5 +1,6 @@
 import { Send } from '@mui/icons-material'
 import styled from 'styled-components'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
     height: 60vh;
@@ -19,6 +20,9 @@ const Desc = styled.div`
     font-size: 24px;
     font-weight: 300;
     margin-bottom: 20px;
+    ${mobile`
+        text-align: center;
+    `}
 `
 
 const InputPlace = styled.div`
@@ -26,12 +30,15 @@ const InputPlace = styled.div`
     height: 40px;
     background-color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     border: 1px solid lightgray;
+    ${mobile`
+        width: 90%;
+    `}
 
 `
 const Input = styled.input`
-    border: none; /*make it look like merging, getting rid of this to see*/
+    border: none; /* make it look like merging, getting rid of this to see */
     flex: 9; /*9 unit*/
     padding-left: 20px;
 `
